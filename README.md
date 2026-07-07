@@ -194,28 +194,28 @@ git clone https://github.com/lanarphoenixiik/StreamTTS.git
 <table style="width: 100%; border-collapse: collapse; background: #0d1117; border-radius: 8px; overflow: hidden; color: #c9d1d9; font-size: 0.95em;">
   <thead>
     <tr style="background: #161b22;">
-      <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #30363d;">Комбинация</th>
-      <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #30363d;">Действие</th>
+      <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #30363d; width: 35%;">Комбинация</th>
+      <th style="padding: 12px 15px; text-align: left; border-bottom: 1px solid #30363d; width: 65%;">Действие</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="padding: 10px 15px; border-bottom: 1px solid #21262d; white-space: nowrap;">
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Ctrl</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">Ctrl</kbd>
         +
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Shift</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">Shift</kbd>
         +
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">M</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">M</kbd>
       </td>
       <td style="padding: 10px 15px; border-bottom: 1px solid #21262d;">Включить/выключить озвучку (мьют)</td>
     </tr>
     <tr>
       <td style="padding: 10px 15px; white-space: nowrap;">
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Ctrl</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">Ctrl</kbd>
         +
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Shift</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">Shift</kbd>
         +
-        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">E</kbd>
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace; font-size: 0.9em;">E</kbd>
       </td>
       <td style="padding: 10px 15px;">🛑 <strong style="color: #f0f6fc;">Экстренная остановка</strong> — прерывает текущее воспроизведение, очищает очередь, удаляет временный файл</td>
     </tr>
