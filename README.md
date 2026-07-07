@@ -58,6 +58,7 @@
 
 ```bash
 git clone https://github.com/lanarphoenixiik/StreamTTS.git
+```
 
 или скачайте ZIP и распакуйте.
 
