@@ -40,7 +40,6 @@
   <li style="padding: 4px 0;">· <a href="#%EF%B8%8F-конфигурация" style="color: #58a6ff; text-decoration: none;">⚙️ Конфигурация</a></li>
   <li style="padding: 4px 0;">· <a href="#-устранение-проблем" style="color: #58a6ff; text-decoration: none;">🧠 Устранение проблем</a></li>
   <li style="padding: 4px 0;">· <a href="#-структура-проекта" style="color: #58a6ff; text-decoration: none;">📁 Структура проекта</a></li>
-  <li style="padding: 4px 0;">· <a href="#-вклад" style="color: #58a6ff; text-decoration: none;">🤝 Вклад</a></li>
   <li style="padding: 4px 0;">· <a href="#-лицензия" style="color: #58a6ff; text-decoration: none;">📜 Лицензия</a></li>
 </ul>
 
@@ -200,13 +199,31 @@ git clone https://github.com/lanarphoenixiik/StreamTTS.git
     </tr>
   </thead>
   <tbody>
-    <tr><td style="padding: 10px 15px; border-bottom: 1px solid #21262d;"><code style="background: #161b22; padding: 0 6px; border-radius: 4px;">Ctrl + Shift + M</code></td><td style="padding: 10px 15px; border-bottom: 1px solid #21262d;">Включить/выключить озвучку (мьют)</td></tr>
-    <tr><td style="padding: 10px 15px;"><code style="background: #161b22; padding: 0 6px; border-radius: 4px;">Ctrl + Shift + E</code></td><td style="padding: 10px 15px;">🛑 <strong style="color: #f0f6fc;">Экстренная остановка</strong> — прерывает текущее воспроизведение, очищает очередь, удаляет временный файл</td></tr>
+    <tr>
+      <td style="padding: 10px 15px; border-bottom: 1px solid #21262d; white-space: nowrap;">
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Ctrl</kbd>
+        +
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Shift</kbd>
+        +
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">M</kbd>
+      </td>
+      <td style="padding: 10px 15px; border-bottom: 1px solid #21262d;">Включить/выключить озвучку (мьют)</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px 15px; white-space: nowrap;">
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Ctrl</kbd>
+        +
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">Shift</kbd>
+        +
+        <kbd style="background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 4px; padding: 2px 8px; font-family: 'Consolas', monospace;">E</kbd>
+      </td>
+      <td style="padding: 10px 15px;">🛑 <strong style="color: #f0f6fc;">Экстренная остановка</strong> — прерывает текущее воспроизведение, очищает очередь, удаляет временный файл</td>
+    </tr>
   </tbody>
 </table>
 
-<blockquote style="background: #0d1117; border-left: 4px solid #f0883e; padding: 10px 20px; border-radius: 4px; color: #c9d1d9;">
-  <strong>Важно:</strong> Горячие клавиши работают, только когда окно консоли находится в фокусе.
+<blockquote style="background: #0d1117; border-left: 4px solid #f0883e; padding: 10px 20px; border-radius: 4px; color: #c9d1d9; margin-top: 15px;">
+  <strong style="color: #f0f6fc;">Важно:</strong> Горячие клавиши работают только когда окно консоли находится в фокусе.
 </blockquote>
 
 <hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
@@ -297,49 +314,11 @@ git clone https://github.com/lanarphoenixiik/StreamTTS.git
 
 <hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
 
-<h2 id="-вклад" style="color: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 1.8em;">
-  🤝 Вклад
-</h2>
-
-<p style="color: #c9d1d9;">Если вы нашли баг или у вас есть идея по улучшению:</p>
-
-<ol style="color: #c9d1d9; line-height: 1.8;">
-  <li>Создайте Issue в <a href="https://github.com/lanarphoenixiik/StreamTTS/issues" style="color: #58a6ff; text-decoration: none;">репозитории</a></li>
-  <li>Сделайте форк и отправьте Pull Request</li>
-</ol>
-
-<p style="color: #c9d1d9;">Мы приветствуем любую помощь!</p>
-
-<hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
-
 <h2 id="-лицензия" style="color: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 1.8em;">
   📜 Лицензия
 </h2>
 
 <p style="color: #c9d1d9;">Проект распространяется под лицензией <strong style="color: #f0f6fc;">MIT</strong>. Вы можете свободно использовать, изменять и распространять его с указанием авторства.</p>
-
-<hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
-
-<h2 style="color: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 1.8em;">
-  💬 Контакты
-</h2>
-
-<ul style="color: #c9d1d9; line-height: 1.8; list-style: none; padding-left: 0;">
-  <li><strong style="color: #f0f6fc;">Автор:</strong> <a href="https://github.com/lanarphoenixiik" style="color: #58a6ff; text-decoration: none;">lanarphoenixiik</a></li>
-  <li><strong style="color: #f0f6fc;">Репозиторий:</strong> <a href="https://github.com/lanarphoenixiik/StreamTTS" style="color: #58a6ff; text-decoration: none;">https://github.com/lanarphoenixiik/StreamTTS</a></li>
-</ul>
-
-<hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
-
-<h2 style="color: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 1.8em;">
-  ✨ Благодарности
-</h2>
-
-<ul style="color: #c9d1d9; line-height: 1.8;">
-  <li><a href="https://github.com/rhasspy/piper" style="color: #58a6ff; text-decoration: none;">Piper TTS</a> — за отличный движок синтеза речи</li>
-  <li><a href="https://github.com/TwitchIO/TwitchIO" style="color: #58a6ff; text-decoration: none;">TwitchIO</a> — за удобную библиотеку для работы с чатом</li>
-  <li>Всем стримерам и тестировщикам за обратную связь</li>
-</ul>
 
 <hr style="border: none; border-top: 1px solid #30363d; margin: 30px 0;">
 
