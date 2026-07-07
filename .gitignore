@@ -1,0 +1,15 @@
+# Игнорируем скачанные компоненты
+python/
+piper/
+voices/
+temp_speech.wav
+test.wav
+*.zip
+*.wav
+*.log
+
+# Игнорируем системные файлы
+*.pyc
+__pycache__/
+.vscode/
+.idea/

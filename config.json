@@ -1,0 +1,27 @@
+{
+    "twitch_token": "oauth:ТОКЕН",
+    "twitch_nick": "ИМЯ_БОТА",
+    "twitch_channel": "ИМЯ_КАНАЛА",
+    "piper_exe": "piper/piper.exe",
+    "default_model": "voices\\ru_RU-denis-medium.onnx",
+    "role_models": {
+        "moderator": "",
+        "subscriber": "",
+        "vip": "",
+        "broadcaster": ""
+    },
+    "mic_device_id": null,
+    "rms_threshold": 0.015,
+    "silence_delay": 0.5,
+    "silence_enabled": true,
+    "speech_speed": 0.5,
+    "ignored_users": [
+        "streamelements",
+        "nightbot",
+        "fossabot",
+        "moobot"
+    ],
+    "max_queue_size": 15,
+    "message_max_len": 150,
+    "mute_hotkey": "ctrl+shift+m"
+}

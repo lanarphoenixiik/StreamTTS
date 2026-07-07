@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки StreamTTS</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #1e1e2f; color: #eee; padding: 20px; }
+        h1 { color: #ffa500; }
+        .group { background: #2a2a3f; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        label { display: inline-block; width: 200px; font-weight: bold; }
+        input[type="text"], input[type="number"], input[type="password"], select {
+            width: 300px; padding: 5px; background: #333; color: #fff; border: 1px solid #555; border-radius: 4px;
+        }
+        input[type="checkbox"] { width: 20px; height: 20px; }
+        input[type="submit"] { background: #ffa500; color: #000; border: none; padding: 10px 30px; font-size: 16px; border-radius: 5px; cursor: pointer; }
+        .token-wrapper { display: inline-block; position: relative; }
+        .token-wrapper span { position: absolute; right: 8px; top: 5px; cursor: pointer; font-size: 18px; user-select: none; }
+        .status { margin-top: 20px; padding: 10px; background: #2a2a3f; border-radius: 5px; }
+        .hint { font-size: 0.9em; color: #aaa; }
+        .footer { margin-top: 30px; font-size: 0.8em; color: #666; }
+        pre { background: #111; padding: 10px; border-radius: 5px; }
+        .btn-refresh { background: #444; color: #fff; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; margin-left: 10px; }
+        .btn-refresh:hover { background: #555; }
+    </style>
+</head>
+<body>
+    <h1>🎙️ Настройки StreamTTS</h1>
+    <form method="post" action="/save" id="settingsForm">
+        <div class="group">
+            <h3>🔑 Twitch</h3>
+            <label>Токен (oauth:...):</label>
+            <div class="token-wrapper">
+                <input type="password" id="tokenField" name="twitch_token" value="{{ config.twitch_token }}" size="50">
+                <span onclick="toggleTokenVisibility()">👁️</span>
+            </div>
+            <br>
+            <label>Имя бота:</label> <input type="text" name="twitch_nick" value="{{ config.twitch_nick }}"><br>
+            <label>Канал (без #):</label> <input type="text" name="twitch_channel" value="{{ config.twitch_channel }}">
+        </div>
+
+        <div class="group">
+            <h3>🗣️ Piper TTS</h3>
+            <label>Путь к piper.exe:</label> <input type="text" name="piper_exe" value="{{ config.piper_exe }}"><br>
+            <label>Модель по умолчанию:</label>
+            <select name="default_model" id="default_model">
+                <option value="">-- Выберите модель --</option>
+            </select>
+            <button type="button" class="btn-refresh" onclick="loadModels()">Обновить список</button><br>
+            <label>Скорость речи (0.5–2.0):</label>
+            <input type="number" step="0.05" name="speech_speed" value="{{ config.speech_speed }}" min="0.5" max="2.0"><br>
+            <span class="hint">Меньше 1.0 — медленнее, больше 1.0 — быстрее.</span>
+        </div>
+
+        <div class="group">
+            <h3>🎭 Голоса для ролей</h3>
+            <label>Модератор:</label>
+            <select name="moderator_model" id="moderator_model">
+                <option value="">-- По умолчанию --</option>
+            </select><br>
+            <label>Подписчик:</label>
+            <select name="subscriber_model" id="subscriber_model">
+                <option value="">-- По умолчанию --</option>
+            </select><br>
+            <label>VIP:</label>
+            <select name="vip_model" id="vip_model">
+                <option value="">-- По умолчанию --</option>
+            </select><br>
+            <label>Стример (broadcaster):</label>
+            <select name="broadcaster_model" id="broadcaster_model">
+                <option value="">-- По умолчанию --</option>
+            </select><br>
+            <span class="hint">Выберите модель для каждой роли. Если оставить "По умолчанию", будет использоваться модель по умолчанию.</span>
+        </div>
+
+        <div class="group">
+            <h3>🎤 Микрофон (режим тишины)</h3>
+            <label>Включить режим тишины:</label>
+            <input type="checkbox" name="silence_enabled" {% if config.silence_enabled %}checked{% endif %}><br>
+            <label>ID устройства (None=авто):</label> <input type="text" name="mic_device_id" value="{{ config.mic_device_id or '' }}"><br>
+            <label>Порог RMS (0.01–0.03):</label> <input type="number" step="0.001" name="rms_threshold" value="{{ config.rms_threshold }}"><br>
+            <label>Задержка тишины (сек):</label> <input type="number" step="0.1" name="silence_delay" value="{{ config.silence_delay }}">
+        </div>
+
+        <div class="group">
+            <h3>📋 Фильтры сообщений</h3>
+            <label>Игнорируемые боты:</label> <input type="text" name="ignored_users" value="{{ config.ignored_users | join(', ') }}" size="50"><br>
+            <label>Макс. длина сообщения:</label> <input type="number" name="message_max_len" value="{{ config.message_max_len }}"><br>
+            <label>Макс. размер очереди:</label> <input type="number" name="max_queue_size" value="{{ config.max_queue_size }}">
+        </div>
+
+        <input type="submit" value="💾 Сохранить и перезагрузить">
+    </form>
+
+    <div class="status">
+        <p>🔹 Горячая клавиша для отключения звука: <strong>Ctrl+Shift+M</strong> (работает только в окне консоли).</p>
+        <p>🔹 Чтобы узнать ID микрофона, выполните в командной строке (из папки программы):</p>
+        <pre>python\python.exe -c "import sounddevice as sd; print(sd.query_devices())"</pre>
+        <p>🔹 Для каждой роли можно выбрать свой голос (файл .onnx). Если оставить "По умолчанию" — используется модель по умолчанию.</p>
+    </div>
+    <div class="footer">StreamTTS Portable — все настройки сохраняются в config.json</div>
+
+    <script>
+        function toggleTokenVisibility() {
+            const field = document.getElementById('tokenField');
+            field.type = (field.type === 'password') ? 'text' : 'password';
+        }
+
+        // Маппинг технических имён файлов в красивые названия
+        const modelNames = {
+            'voices/ru_RU-irina-medium.onnx': 'Ирина (женский)',
+            'voices/ru_RU-denis-medium.onnx': 'Денис (мужской)',
+            'voices/ru_RU-dmitri-medium.onnx': 'Дмитрий (мужской)',
+            'voices/ru_RU-ruslan-medium.onnx': 'Руслан (мужской)'
+        };
+
+        function loadModels() {
+            fetch('/api/models')
+                .then(response => response.json())
+                .then(models => {
+                    const defaultSelect = document.getElementById('default_model');
+                    defaultSelect.innerHTML = '<option value="">-- Выберите модель --</option>';
+                    models.forEach(model => {
+                        const option = document.createElement('option');
+                        option.value = model;
+                        option.textContent = modelNames[model] || model.replace('voices/', '');
+                        if (model === '{{ config.default_model }}') {
+                            option.selected = true;
+                        }
+                        defaultSelect.appendChild(option);
+                    });
+
+                    const roleSelects = ['moderator_model', 'subscriber_model', 'vip_model', 'broadcaster_model'];
+                    const roleValues = {
+                        moderator_model: '{{ config.role_models.get("moderator", "") }}',
+                        subscriber_model: '{{ config.role_models.get("subscriber", "") }}',
+                        vip_model: '{{ config.role_models.get("vip", "") }}',
+                        broadcaster_model: '{{ config.role_models.get("broadcaster", "") }}'
+                    };
+
+                    roleSelects.forEach(id => {
+                        const select = document.getElementById(id);
+                        select.innerHTML = '<option value="">-- По умолчанию --</option>';
+                        models.forEach(model => {
+                            const option = document.createElement('option');
+                            option.value = model;
+                            option.textContent = modelNames[model] || model.replace('voices/', '');
+                            if (model === roleValues[id]) {
+                                option.selected = true;
+                            }
+                            select.appendChild(option);
+                        });
+                    });
+                })
+                .catch(error => console.error('Ошибка загрузки моделей:', error));
+        }
+
+        window.onload = loadModels;
+    </script>
+</body>
+</html>
